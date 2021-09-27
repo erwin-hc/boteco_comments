@@ -3,6 +3,11 @@ const addModalForm = document.querySelector('.add-modal .form');
 const btnAdd = document.querySelector('.btn-add');
 const tableUsers = document.querySelector('.table-users');
 
+db.collection('comments').get().then(function(querySnapshot) {      
+  document.getElementById('count').value = querySnapshot.size;
+  console.log(querySnapshot.size); 
+});
+
 let id;
 
 var data = new Date();
@@ -41,6 +46,8 @@ addModalForm.addEventListener('submit', e => {
 
   addModalForm.nome.value = '';
   addModalForm.comentario.value = '';
+
+
     
 });
 
@@ -60,10 +67,18 @@ db.collection('comments').orderBy("horario",'desc').onSnapshot(snapshot => {
       tableUsers.removeChild(tbody);
       renderUser(change.doc);
     }
+
+    db.collection('comments').get().then(function(querySnapshot) {      
+      document.getElementById('count').value = querySnapshot.size;
+      console.log(querySnapshot.size); 
+    });
+    
   })
 })
 
+
+
 // Click submit in add modal
 
-
+ 
 
