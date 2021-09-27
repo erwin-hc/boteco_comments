@@ -29,8 +29,8 @@ var data_hora = str_data + ' - ' + str_hora;
 const renderUser = doc => {
   const tr = `    
   <tr data-id='${doc.id}'>
-  <td style = "text-transform:uppercase;">${doc.data().nome} - ${doc.data().horario}</td>     
-  <td ><textarea>${doc.data().comentario}</textarea></td>
+  <td style = "text-transform:uppercase;">${doc.data().horario} :: ${doc.data().nome}</td>     
+  <td ><textarea readonly>${doc.data().comentario}</textarea></td>
   </tr>
   `;
   tableUsers.insertAdjacentHTML('beforeend', tr);
